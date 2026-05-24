@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voice Notes Daily Planner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Voice Notes Daily Planner</h1>
+        <p>Record a note, convert it to tasks, and rank them by priority.</p>
+      </header>
+
+      <section class="panel recorder-panel">
+        <h2>1) Record a Voice Note</h2>
+        <div class="controls">
+          <button id="recordBtn" type="button">Start recording</button>
+          <button id="stopBtn" type="button" disabled>Stop</button>
+          <span id="recordingStatus" aria-live="polite">Not recording</span>
+        </div>
+        <audio id="audioPlayback" controls hidden></audio>
+        <p class="help">
+          Tip: mention urgency words like <em>urgent</em>, <em>today</em>, or
+          <em>low priority</em> to help ranking.
+        </p>
+      </section>
+
+      <section class="panel transcript-panel">
+        <h2>2) Transcript / Note Text</h2>
+        <textarea
+          id="noteText"
+          rows="7"
+          placeholder="Speech transcript appears here. You can also type your note manually..."
+        ></textarea>
+        <div class="inline-actions">
+          <button id="processBtn" type="button">Create prioritized to-do list</button>
+          <button id="clearBtn" type="button" class="secondary">Clear</button>
+        </div>
+      </section>
+
+      <section class="panel todo-panel">
+        <h2>3) Prioritized To-Do List</h2>
+        <ul id="todoList" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <template id="todoItemTemplate">
+      <li class="todo-item">
+        <div>
+          <span class="task-text"></span>
+          <div class="meta">
+            <span class="priority-badge"></span>
+            <span class="score"></span>
+          </div>
+        </div>
+      </li>
+    </template>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
